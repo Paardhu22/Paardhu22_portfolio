@@ -65,6 +65,12 @@ export function ContactContent() {
   return (<>
 <section id="contact" className="section contact-section standalone-section" aria-labelledby="contact-title">
         <h2 id="contact-title">Contact<span className="name-dot" aria-hidden="true">.</span></h2>
+        <figure className="contact-quote">
+          <blockquote>
+            <p>“Twenty Years from now you will be <TextAccent tone="rose">more disappointed</TextAccent> by the things that you <TextAccent tone="violet">didn't do</TextAccent> than by the ones you <TextAccent tone="blue">did do</TextAccent>.”</p>
+          </blockquote>
+          <figcaption>— Unknown</figcaption>
+        </figure>
         <div className="contact-links">
           <a className="contact-link" href="mailto:paardhivreddy22@gmail.com">
             <span className="contact-link-label">paardhivreddy22@gmail.com</span>

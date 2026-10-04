@@ -114,6 +114,9 @@ h1 { font-size: 1.625rem; font-weight: 700; letter-spacing: -.055em; line-height
 .contact-section { margin-top: 94px; }
 .standalone-section { margin-top: 48px; }
 .contact-section h2 { font-size: 1.625rem; font-weight: 600; letter-spacing: -.045em; line-height: 1.45; }
+.contact-quote { margin: 24px 0 32px; max-width: 48ch; }
+.contact-quote blockquote { margin: 0; color: #565b64; font-size: 1.125rem; line-height: 1.85; letter-spacing: -.018em; }
+.contact-quote figcaption { margin-top: 12px; color: var(--secondary); font-size: .8125rem; }
 /* Animated links adapted from the supplied Skiper UI Link001 reference. */
 .contact-links { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 17px; }
 .contact-link { position: relative; display: inline-flex; align-items: center; max-width: 100%; min-width: 0; font-size: 1.0625rem; font-weight: 500; transition: color .3s ease; }
