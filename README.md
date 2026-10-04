@@ -5,6 +5,8 @@ Work, About, and Contact are distinct routes in one persistent application.
 
 ## Run and build
 
+Use Node.js 24 (`nvm use` reads `.nvmrc`).
+
 For the stable local preview, including after closing and reopening the browser:
 
 ```sh
@@ -36,6 +38,29 @@ history fallback to `index.html` for `/about` and `/contact`. `_redirects` is
 included for Netlify and Cloudflare Pages. The build also produces `about.html`
 and `contact.html` aliases for older bookmarks. `/index.html`, `/work`, and the
 old `.html` URLs resolve to the canonical routes without a document reload.
+
+## Deploy to Vercel
+
+Import [Paardhu22/Paardhu22_portfolio](https://github.com/Paardhu22/Paardhu22_portfolio)
+from the Vercel dashboard and deploy the `main` branch. Use the repository root
+as the Root Directory; this repository contains only the portfolio app.
+
+`vercel.json` sets the Vite preset, `npm ci` install command, `npm run build`
+build command, and `dist` output directory. The npm build also runs `postbuild`
+to copy photos, audio, fonts, and other static assets. `package.json` selects
+Node.js 24. No environment variables are required.
+
+The SPA rewrite serves `index.html` for client routes so direct visits and
+refreshes on `/about` and `/contact` work. This follows
+[Vercel's Vite deployment guidance](https://vercel.com/docs/frameworks/frontend/vite#using-vite-to-make-spas).
+Static assets retain their normal file URLs. `.vercelignore` excludes local
+dependencies, build output, environment files, and unused original uploads from
+CLI deployments.
+
+After deployment, check `/`, `/about`, and `/contact` directly, refresh each page,
+and open a project and a photo. Future pushes to the connected `main` branch
+update the production deployment. This setup prepares the repository; a Vercel
+account/project connection is still required to publish it.
 
 ## Navigation and music
 
