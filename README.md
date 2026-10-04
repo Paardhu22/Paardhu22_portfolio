@@ -140,6 +140,8 @@ The viewer expands from its card and closes with Escape, the close button, or th
 backdrop. It locks background scrolling and returns focus to the card. Switching
 routes through browser history dismisses an open preview and cancels its work.
 Project viewers use native dialogs and Web Animations inside the React shell.
+The opaque viewer backdrop prevents the underlying Work cards from showing
+through long case studies as blurred dark shapes.
 
 ## Triya client engagement
 
