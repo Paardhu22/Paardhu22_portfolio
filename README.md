@@ -86,17 +86,16 @@ export const music = {
   src: 'assets/audio/Tilt.mp3',
   title: 'Tilt',
   volume: 0.45,
-  autoplay: true,
 };
 ```
 
-Music attempts to start automatically and loops at 45% volume. Browsers may
-block audible autoplay on a fresh visit. When blocked, the player waits for the
-first ordinary tap, click, or keypress and retries from that interaction. No
-specific Play click is required, but browser/site settings can still prohibit
-sound. Pausing with the music button is respected across all route changes;
-other interactions do not restart a manually paused track. A full refresh or a
-new tab creates a new application session. The button always allows play/pause.
+Music starts only when the visitor presses the music button. Opening the site,
+clicking a project, navigating, and typing never trigger playback. Audio is not
+loaded until Play is pressed. The track then loops at 45% volume and continues
+across internal route changes. Pause keeps it stopped. Returning through the
+browser's page cache leaves music paused until Play is pressed again. A full
+refresh or new tab also starts silent. Playback errors stay on the player and do
+not install automatic retry handlers on unrelated interactions.
 Waveform animation runs only while playing and visible, and stays still for
 reduced motion. Empty `src` retains the coming-soon state.
 
@@ -109,8 +108,8 @@ and `src/app.css`. Existing spacing, typography, the 17px Contact links, and the
 minimal design remain in place. There are no trackers, analytics, or form backend.
 Email opens the visitor’s mail app; social/source links open in new tabs.
 
-The short bio is starter copy based on the chosen role. Replace it with more
-personal details as desired. There are no invented employers or testimonials.
+The introduction describes the supplied client work and technical projects.
+Page copy uses direct descriptions rather than decorative taglines.
 
 ## About photos and hackathon feature
 
@@ -173,6 +172,9 @@ through long case studies as blurred dark shapes.
 Triya appears as one Work card for a three-product engagement: `triya-website`,
 `triya-manager`, and `triya-android`. `assets/triya-showcase.js` owns the product
 picker and illustrative interfaces; `assets/triya-showcase.css` styles them.
+The Work card fans its device illustrations on hover or keyboard focus. Product
+choices lift their small device previews. Reduced motion keeps these still, and
+touch devices do not inherit sticky hover movement.
 Each product has its own engineering article in `assets/triya-case-study.js`,
 using the existing rolling contents reader: seven sections for the website,
 eight for Manager, and eight for Android.
