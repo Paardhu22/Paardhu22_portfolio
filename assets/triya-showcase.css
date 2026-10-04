@@ -1,13 +1,13 @@
 .project-with-triya { grid-column: 1 / -1; }
 .project-with-triya .project-preview { aspect-ratio: 2.65; }
-.triya-cover { position: relative; display: block; width: 100%; height: 100%; padding: 23px 27px; overflow: hidden; background: #eee9e1; color: #3d362d; }
+.triya-cover { position: relative; display: block; width: 100%; height: 100%; padding: 23px 27px; overflow: hidden; background: #eee9e1; color: #3d362d; transition: background .35s ease; }
 .triya-cover-label { display: block; font-size: .6875rem; color: #706454; }
 .triya-cover-copy { display: block; margin-top: 14px; font-size: clamp(1.25rem,3vw,1.65rem); letter-spacing: -.05em; line-height: 1.15; }
 .triya-cover-copy > span { color: #977440; }
 .triya-cover-platforms { position: absolute; left: 27px; bottom: 23px; font-size: .625rem; color: #706454; }
 .triya-cover-platforms > span { padding-inline: 6px; }
 .triya-cover-devices { position: absolute; inset: 23px 30px 26px 51%; }
-.triya-device { position: absolute; display: block; padding: 7px; border: 1px solid #ab9c88; background: #faf8f4; border-radius: 5px; box-shadow: 0 7px 14px rgb(67 51 32 / .04); }
+.triya-device { position: absolute; display: block; padding: 7px; border: 1px solid #ab9c88; background: #faf8f4; border-radius: 5px; box-shadow: 0 7px 14px rgb(67 51 32 / .04); transition: transform .45s var(--ease); }
 .triya-device-site { top: 0; left: 0; width: 76%; height: 72%; }
 .triya-device-manager { bottom: 0; left: 18%; width: 68%; height: 70%; background: #e7ddcc; }
 .triya-device-phone { right: 0; bottom: -3px; width: 25%; height: 79%; border-radius: 9px; padding: 10px 6px; background: #faf8f4; }
@@ -27,13 +27,13 @@
 .triya-suite-facts dt { color: #6d6458; font-size: .625rem; }
 .triya-suite-facts dd { margin: 4px 0 0; color: #3e372e; font-size: .8125rem; font-weight: 600; line-height: 1.65; }
 .triya-product-picker { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
-.triya-product-picker > button { position: relative; display: flex; flex-direction: column; align-items: flex-start; min-width: 0; padding: 16px; border: 1px solid #d4c9b9; border-radius: 10px; background: #faf8f4; text-align: left; color: #655a4b; }
+.triya-product-picker > button { position: relative; display: flex; flex-direction: column; align-items: flex-start; min-width: 0; padding: 16px; border: 1px solid #d4c9b9; border-radius: 10px; background: #faf8f4; text-align: left; color: #655a4b; transition: transform .3s var(--ease), background .3s ease, border-color .3s ease; }
 .triya-product-picker > button:hover { border-color: #a78d68; }
 .triya-product-picker > button[aria-pressed="true"] { color: #3d362d; border-color: #80653f; box-shadow: inset 0 0 0 1px #80653f; }
 .triya-product-number { font-size: .625rem; color: #74644f; }
 .triya-product-picker strong { font-size: .875rem; font-weight: 600; }
 .triya-product-purpose { margin-top: 3px; font-size: .625rem; line-height: 1.6; color: #6d6458; }
-.triya-product-device { position: relative; display: block; width: 74px; height: 49px; margin: 13px 0; padding: 5px; border: 1px solid #b9ac99; border-radius: 4px; background: #fffdf9; }
+.triya-product-device { position: relative; display: block; width: 74px; height: 49px; margin: 13px 0; padding: 5px; border: 1px solid #b9ac99; border-radius: 4px; background: #fffdf9; transition: transform .35s var(--ease); }
 .triya-product-device-manager { background: #e7ddcc; width: 72px; height: 52px; }
 .triya-product-device-android { width: 30px; height: 52px; padding: 6px 3px; border-radius: 6px; }
 .triya-selected-product { margin-top: 29px; }
@@ -107,6 +107,23 @@
 .triya-read-notes { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; color: #766248; font-size: .6875rem; text-decoration: underline; text-underline-offset: 4px; }
 .triya-suite-note { margin-top: 18px; padding-top: 16px; border-top: 1px solid #dfd7cb; }
 .qp-case-study[data-study="triya"] { --case-accent: #766248; --case-focus: #766248; --case-mark: #b19c7e; --case-muted: #f4f0e9; --case-flow: #f4f0e9; --case-line: #ded7cd; --case-marker: #766248; overflow-wrap: anywhere; }
+.project-with-triya .project-preview-trigger:focus-visible .triya-cover { background: #e8e0d5; }
+.project-with-triya .project-preview-trigger:focus-visible .triya-device-site { transform: translate(-5px,-5px) rotate(-2deg); }
+.project-with-triya .project-preview-trigger:focus-visible .triya-device-manager { transform: translate(1px,-2px) rotate(1deg); }
+.project-with-triya .project-preview-trigger:focus-visible .triya-device-phone { transform: translate(7px,-2px) rotate(4deg); }
+.triya-product-picker > button:focus-visible { transform: translateY(-3px); background: #f3ede3; }
+.triya-product-picker > button:focus-visible .triya-product-device { transform: translateY(-3px); }
+@media (hover: hover) and (pointer: fine) {
+  .project-with-triya .project-preview-trigger:hover .triya-cover { background: #e8e0d5; }
+  .project-with-triya .project-preview-trigger:hover .triya-device-site { transform: translate(-5px,-5px) rotate(-2deg); }
+  .project-with-triya .project-preview-trigger:hover .triya-device-manager { transform: translate(1px,-2px) rotate(1deg); }
+  .project-with-triya .project-preview-trigger:hover .triya-device-phone { transform: translate(7px,-2px) rotate(4deg); }
+  .triya-product-picker > button:hover { transform: translateY(-3px); background: #f3ede3; }
+  .triya-product-picker > button:hover .triya-product-device { transform: translateY(-3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .triya-device, .triya-product-device, .triya-product-picker > button { transform: none !important; transition: none; }
+}
 @media (max-width: 640px) {
   .triya-cover { padding: 20px; }
   .project-with-triya .project-preview { aspect-ratio: 2; }
