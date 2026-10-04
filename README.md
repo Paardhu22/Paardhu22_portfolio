@@ -107,7 +107,7 @@ place claim is inferred. There is no dither effect or reveal-colour control.
 
 Edit `assets/projects.js`. qp-gen uses `preview: 'qpgen'` and seven screenshots in
 `assets/projects/qp-gen/`. TRINKER uses `preview: 'terminal'`, SELENO uses
-`preview: 'seleno'`. Emptying the list
+`preview: 'seleno'`, and Triya uses `preview: 'triya'`. Emptying the list
 restores the labelled preview example. All user-supplied assets stay in `assets/`;
 the build copies images, audio, fonts, and their licences into `dist/assets/`.
 
@@ -140,6 +140,42 @@ The viewer expands from its card and closes with Escape, the close button, or th
 backdrop. It locks background scrolling and returns focus to the card. Switching
 routes through browser history dismisses an open preview and cancels its work.
 Project viewers use native dialogs and Web Animations inside the React shell.
+
+## Triya client engagement
+
+Triya appears as one Work card for a three-product engagement: `triya-website`,
+`triya-manager`, and `triya-android`. `assets/triya-showcase.js` owns the product
+picker and illustrative interfaces; `assets/triya-showcase.css` styles them.
+Each product has its own engineering article in `assets/triya-case-study.js`,
+using the existing rolling contents reader: seven sections for the website,
+eight for Manager, and eight for Android.
+
+The roughly 5,000-tenant figure is the project owner's description of client
+scale. It is not a concurrent-send benchmark. Manager's source sends
+property-scoped WhatsApp reminders sequentially and reports individual delivery
+outcomes. The Android build is explicitly described as mock-backed, with
+production API integration pending.
+
+The website preview switches accommodation categories and opens a sample detail
+view. Manager changes example properties, records a local sample receipt, and
+composes a reminder preview. Android switches between example Home, Floors, and
+Rent screens. All records and metrics in those interfaces are invented. They
+make no requests to client services, send no messages, and store no records.
+Switching products or closing the dialog disposes the current preview and reader;
+reopening starts a fresh session.
+
+Client repositories were inspected read-only. GitHub's website README is a
+Next.js starter document, so functional notes come from the local implementation
+(`2cedce4`). Android's GitHub README and local checkout agree (`5ff4f5d`);
+its mock-backed status is preserved. Manager was unavailable through the public
+GitHub API, so its local checkout (`1f6bbb2`) supplied the technical context.
+These case studies summarize implementation without claiming that client builds
+or suites were run as part of the portfolio work.
+
+No client screenshots, property names, addresses, tenant records, credentials,
+contact details, operational URLs, or configuration files are imported into the
+portfolio. The device illustrations use authored HTML and SVG. The public
+showcase omits client source and deployment links.
 
 ## TRINKER terminal
 

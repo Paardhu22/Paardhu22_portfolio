@@ -6,6 +6,7 @@ import { createQpgenCover, mountQpgenStudio } from './qpgen-studio.js';
 import { mountQpgenCaseStudy } from './qpgen-case-study.js';
 import { mountTrinkerCaseStudy } from './trinker-case-study.js';
 import { mountSelenoCaseStudy } from './seleno-case-study.js';
+import { createTriyaCover, mountTriyaShowcase } from './triya-showcase.js';
 export function initializeProjectViewer(projects) {
   const lifetime = new AbortController();
   const listen = (target, type, callback, options = {}) => target.addEventListener(type, callback, { ...options, signal: lifetime.signal });
@@ -167,8 +168,9 @@ export function initializeProjectViewer(projects) {
     const isTerminal = project.preview === 'terminal';
     const isSeleno = project.preview === 'seleno';
     const isQpgen = project.preview === 'qpgen';
-    dialog.dataset.kind = isTerminal ? 'terminal' : isSeleno ? 'seleno' : isQpgen ? 'qpgen' : 'photo';
-    dialog.classList.toggle('has-case-study', isQpgen || isTerminal || isSeleno);
+    const isTriya = project.preview === 'triya';
+    dialog.dataset.kind = isTerminal ? 'terminal' : isSeleno ? 'seleno' : isQpgen ? 'qpgen' : isTriya ? 'triya' : 'photo';
+    dialog.classList.toggle('has-case-study', isQpgen || isTerminal || isSeleno || isTriya);
     terminalSession?.dispose();
     terminalSession = null;
     showcaseSession?.dispose();
@@ -178,7 +180,14 @@ export function initializeProjectViewer(projects) {
       : isTerminal ? mountTrinkerCaseStudy(caseStudy, { panel, reducedMotion })
       : isSeleno ? mountSelenoCaseStudy(caseStudy, { panel, reducedMotion }) : null;
     real.hidden = !(isSeleno || isQpgen);
-    if (isTerminal) {
+    if (isTriya) {
+      galleryElement.hidden = true;
+      dialog.querySelector('.project-viewer-zoom').hidden = true;
+      media.removeAttribute('tabindex');
+      media.setAttribute('aria-label', 'Triya client project, website, web app, and Android');
+      media.setAttribute('aria-busy', 'false');
+      showcaseSession = mountTriyaShowcase(media, { panel, reducedMotion, caseStudy });
+    } else if (isTerminal) {
       galleryElement.hidden = true;
       dialog.querySelector('.project-viewer-zoom').hidden = true;
       media.removeAttribute('tabindex');
@@ -198,7 +207,7 @@ export function initializeProjectViewer(projects) {
       gallery.configure(project, index);
     }
     explanation.replaceChildren();
-    const explanations = !caseStudySession && Array.isArray(project.explanation) ? project.explanation : [];
+    const explanations = !caseStudySession && !isTriya && Array.isArray(project.explanation) ? project.explanation : [];
     explanation.hidden = !explanations.length;
     for (const item of explanations) {
       const block = document.createElement('div');
@@ -257,7 +266,10 @@ export function initializeProjectViewer(projects) {
     trigger.className = 'project-preview-trigger';
     const preview = document.createElement('span');
     preview.className = 'project-preview';
-    if (project.preview === 'terminal') {
+    if (project.preview === 'triya') {
+      card.classList.add('project-with-triya');
+      preview.append(createTriyaCover());
+    } else if (project.preview === 'terminal') {
       card.classList.add('project-with-terminal');
       preview.append(createTerminalCover());
     } else if (project.preview === 'seleno') {

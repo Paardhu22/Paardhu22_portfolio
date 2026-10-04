@@ -9,6 +9,7 @@ import '../assets/trinker-terminal.css';
 import '../assets/seleno-showcase.css';
 import '../assets/qpgen-studio.css';
 import '../assets/qpgen-case-study.css';
+import '../assets/triya-showcase.css';
 import './app.css';
 
 createRoot(document.getElementById('root')).render(

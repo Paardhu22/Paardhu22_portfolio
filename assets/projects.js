@@ -1,8 +1,15 @@
-// Interactive previews: 'terminal' for TRINKER, 'seleno' for alignment, 'qpgen' for paper studio.
+// Interactive previews: 'triya' for the client suite, 'terminal' for TRINKER,
+// 'seleno' for alignment, 'qpgen' for paper studio.
 // Each project: { title, description?, details?, url?, year?, image?, previewImage?, imageAlt?, images? }
 // previewImage is an optional full-size version of image. details appears in the expanded view.
 // Images can be local, e.g. "assets/my-project.webp".
 export const projects = [
+  {
+    title: 'Triya',
+    preview: 'triya',
+    description: 'Client work: a website, a property management web app, and an Android counterpart.',
+    details: 'One client engagement across three products. The client manages accommodation for around 5,000 tenants, with property management, rent collections, invoices, and bulk WhatsApp reminders. Choose a product above to explore an illustrative interface and its engineering notes.',
+  },
   {
     title: 'qp-gen',
     preview: 'qpgen',
