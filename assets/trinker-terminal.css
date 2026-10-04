@@ -1,0 +1,84 @@
+/* TRINKER's restrained console palette: blue for activity, colour only for outcomes. */
+.trinker-cover, .trinker-terminal { --terminal-ground: #151b25; --terminal-panel: #1c2431; --terminal-text: #dce3ee; --terminal-muted: #a4afc1; --terminal-blue: #9cbaff; --terminal-red: #f19aa5; --terminal-green: #acd3be; --terminal-yellow: #edcea0; color: var(--terminal-text); background: var(--terminal-ground); font-family: Manrope, sans-serif; }
+.project-with-terminal .project-preview { aspect-ratio: 2048 / 1094; background: #151b25; }
+.trinker-cover { display: flex; flex-direction: column; width: 100%; height: 100%; padding: 13px 15px; line-height: 1.6; overflow: hidden; }
+.trinker-cover-chrome { display: flex; align-items: center; gap: 10px; font-size: .625rem; color: var(--terminal-muted); }
+.trinker-window-mark { letter-spacing: 3px; font-size: .75rem; color: var(--terminal-muted); }
+.trinker-cover-code { display: flex; flex-direction: column; gap: 4px; margin-block: auto; font-size: .625rem; }
+.trinker-cover-command { color: var(--terminal-text); font-size: .75rem; }
+.trinker-cover-muted { color: var(--terminal-muted); }
+.trinker-cover-finding { color: var(--terminal-red); }
+.trinker-cover-label { color: var(--terminal-muted); font-size: .5625rem; }
+.project-with-terminal:hover .trinker-cover-command { animation: trinker-cover-reveal .4s ease-out; }
+@keyframes trinker-cover-reveal { from { opacity: .5; transform: translateX(-4px); } to { opacity: 1; transform: none; } }
+
+.project-viewer[data-kind="terminal"] .project-viewer-panel { width: min(920px, 100%); }
+.project-viewer[data-kind="terminal"] .project-viewer-media { display: block; aspect-ratio: auto; height: auto; max-height: none; background: #151b25; touch-action: auto; }
+.project-viewer[data-kind="terminal"] .project-viewer-close { border-color: #9aa7bc; background: #1c2431; color: #dce3ee; box-shadow: none; }
+.project-viewer[data-kind="terminal"] .project-viewer-close:hover { background: #2b374a; }
+.project-viewer[data-kind="terminal"] .project-viewer-close:focus-visible { outline-color: #9cbaff; }
+.trinker-terminal { display: flex; flex-direction: column; font-size: .8125rem; line-height: 1.75; }
+.trinker-chrome { display: flex; align-items: center; gap: 12px; min-height: 68px; padding: 12px 72px 12px 22px; background: var(--terminal-panel); flex-shrink: 0; }
+.trinker-window-title { font-size: .8125rem; }
+.trinker-demo-label { color: var(--terminal-muted); font-size: .6875rem; margin-left: auto; }
+.trinker-metrics { display: flex; flex-wrap: wrap; gap: 6px 26px; padding: 10px 22px; color: var(--terminal-muted); font-size: .6875rem; flex-shrink: 0; }
+.trinker-phase { display: inline-flex; align-items: center; gap: 8px; color: var(--terminal-blue); }
+.trinker-phase::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.is-running .trinker-phase::before { animation: trinker-breathe 1.2s ease-in-out infinite; }
+@keyframes trinker-breathe { 50% { opacity: .3; } }
+.trinker-progress { height: 2px; background: #334055; flex-shrink: 0; }
+.trinker-progress-fill { display: block; height: 100%; width: 100%; background: var(--terminal-blue); transform: scaleX(0); transform-origin: left; transition: transform .28s var(--ease); }
+.trinker-output { height: clamp(160px, 30svh, 280px); flex-shrink: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #6b7890 var(--terminal-ground); padding: 20px 22px; overflow-wrap: anywhere; }
+.trinker-output:focus-visible { outline-color: var(--terminal-blue); outline-offset: -4px; }
+.trinker-line { white-space: pre-wrap; margin-bottom: 5px; }
+.trinker-line-title { color: var(--terminal-text); margin-block: 6px 9px; }
+.trinker-line-muted { color: var(--terminal-muted); }
+.trinker-line-accent { color: var(--terminal-blue); }
+.trinker-line-command { color: var(--terminal-blue); margin-top: 16px; margin-bottom: 12px; }
+.trinker-line-finding { color: var(--terminal-red); }
+.trinker-line-passed { color: var(--terminal-green); }
+.trinker-line-warning { color: var(--terminal-yellow); }
+.trinker-line-code { color: var(--terminal-text); }
+.trinker-prompt { display: flex; align-items: center; gap: 12px; padding: 6px 14px 6px 22px; background: var(--terminal-panel); flex-shrink: 0; }
+.trinker-prompt-mark { color: var(--terminal-blue); }
+.trinker-input { flex: 1; min-width: 0; width: 0; min-height: 44px; padding: 0; border: 0; border-radius: 3px; background: transparent; color: var(--terminal-text); caret-color: var(--terminal-blue); font: inherit; }
+.trinker-input::placeholder { color: var(--terminal-muted); opacity: 1; }
+.trinker-input:focus-visible { outline-color: var(--terminal-blue); outline-offset: 4px; }
+.trinker-submit { width: 44px; height: 44px; flex-shrink: 0; padding: 0; border: 1px solid #9aa7bc; border-radius: 8px; background: transparent; color: var(--terminal-blue); font: inherit; font-size: 1.25rem; }
+.trinker-submit:hover:not(:disabled) { background: #2b374a; }
+.trinker-submit:disabled { opacity: .5; cursor: default; }
+.trinker-terminal-footer { display: flex; justify-content: space-between; align-items: center; gap: 10px; min-height: 34px; padding: 5px 22px; color: var(--terminal-muted); font-size: .625rem; flex-shrink: 0; }
+.trinker-cancel { padding: 2px 8px; color: var(--terminal-yellow); background: transparent; border: 1px solid #9aa7bc; border-radius: 5px; font: inherit; }
+.trinker-shortcuts { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 22px 16px; flex-shrink: 0; }
+.trinker-shortcuts button { min-height: 34px; padding: 4px 10px; border: 1px solid #9aa7bc; border-radius: 7px; background: transparent; color: var(--terminal-text); font: inherit; font-size: .6875rem; transition: background .2s ease; }
+.trinker-shortcuts button:hover:not(:disabled) { background: #2b374a; }
+.trinker-shortcuts button:disabled { opacity: .5; cursor: default; }
+.trinker-terminal button:focus-visible { outline-color: var(--terminal-blue); }
+.project-viewer-explanation { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 24px; }
+.project-viewer-explanation h3 { font-size: .8125rem; font-weight: 600; line-height: 1.6; }
+.project-viewer-explanation p { margin-top: 6px; color: var(--secondary); font-size: .8125rem; line-height: 1.8; }
+
+@media (max-width: 640px) {
+  .trinker-cover { padding: 16px 18px; }
+  .trinker-cover-code { font-size: .6875rem; }
+  .trinker-cover-command { font-size: .8125rem; }
+  .trinker-terminal { font-size: .75rem; }
+  .trinker-chrome { padding-left: 14px; gap: 8px; }
+  .trinker-demo-label { font-size: .625rem; }
+  .trinker-metrics { padding-inline: 14px; gap: 6px 15px; }
+  .trinker-output { padding: 14px; }
+  .trinker-prompt { padding-left: 14px; gap: 8px; }
+  .trinker-input { font-size: 1rem; }
+  .trinker-terminal-footer { padding-inline: 14px; }
+  .trinker-shortcuts { padding: 6px 14px 12px; gap: 6px; }
+  .project-viewer-explanation { grid-template-columns: 1fr; gap: 16px; margin-top: 20px; }
+}
+
+@media (pointer: coarse) {
+  .trinker-shortcuts button, .trinker-cancel { min-height: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-with-terminal:hover .trinker-cover-command, .is-running .trinker-phase::before { animation: none; }
+  .trinker-progress-fill { transition: none; }
+}

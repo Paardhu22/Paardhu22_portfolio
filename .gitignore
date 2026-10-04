@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.DS_Store
+.env
+.env.*
+!.env.example
+.code-review-graph/
+# Keep original uploads locally; the site uses the optimized preview assets.
+assets/projects/WhatsApp Unknown*/
+assets/projects/qp-gen/*.png
+assets/projects/seleno/*.png

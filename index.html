@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#fcfcfd" />
+    <meta name="description" content="Selected work by Paardhiv Reddy Tumma, creative developer. Thoughtful interfaces, useful ideas, and the little details." />
+    <meta property="og:title" content="Work · Paardhiv Reddy" />
+    <meta property="og:description" content="Selected work by Paardhiv Reddy Tumma, creative developer. Thoughtful interfaces, useful ideas, and the little details." />
+    <meta property="og:type" content="website" />
+    <title>Work · Paardhiv Reddy</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="preload" href="/assets/fonts/manrope.ttf" as="font" type="font/ttf" crossorigin />
+
+    <base href="/" />
+    <style>
+      .startup-fallback { box-sizing: border-box; width: min(600px, calc(100% - 40px)); margin: 0 auto; padding-top: max(100px, 18vh); color: #282b30; font: 16px/1.75 Manrope, system-ui, sans-serif; }
+      .startup-fallback h1 { margin: 0; font-size: 26px; letter-spacing: -.04em; }
+      .startup-fallback p { margin: 8px 0 24px; color: #666b75; }
+      .startup-fallback button { padding: 9px 16px; border: 1px solid #e7e8ec; border-radius: 8px; background: #fcfcfd; color: #282b30; font: inherit; cursor: pointer; }
+      .startup-fallback a { color: #3f5dc6; }
+      body { margin: 0; background: #fcfcfd; }
+    </style>
+    <script>
+      // This stays independent of React, so even a failed module has a visible recovery.
+      window.reportPortfolioStartupError = function (error) {
+        var fallback = document.getElementById('portfolio-startup');
+        if (!fallback) return;
+        document.getElementById('startup-message').textContent = 'The portfolio couldn’t load. Please try again.';
+        document.getElementById('startup-retry').hidden = false;
+        if (error) console.error('Portfolio startup failed:', error);
+      };
+      window.addEventListener('error', function (event) {
+        if (event.error || (event.target && event.target.tagName === 'SCRIPT')) window.reportPortfolioStartupError(event.error);
+      }, true);
+      window.addEventListener('DOMContentLoaded', function () {
+        var button = document.getElementById('startup-retry');
+        if (button) button.addEventListener('click', function () { window.location.reload(); });
+        window.setTimeout(function () { window.reportPortfolioStartupError(); }, 20000);
+      });
+    </script>
+    <script src="/src/start.js" type="module"></script>
+  </head>
+  <body>
+    <div id="root"><main id="portfolio-startup" class="startup-fallback">
+      <h1>Paardhiv Reddy<span style="color: #3f5dc6">.</span></h1>
+      <p>Creative developer</p>
+      <p id="startup-message" role="status">Opening portfolio…</p>
+      <button id="startup-retry" type="button" hidden>Try again</button>
+    </main></div>
+    <noscript><main class="page intro"><h1>Paardhiv Reddy</h1><p class="role">Creative developer</p><p class="intro-copy">Please enable JavaScript to explore my work and interactive projects.</p><p><a href="mailto:paardhivreddy22@gmail.com">paardhivreddy22@gmail.com</a></p><p><a href="https://github.com/Paardhu22">GitHub</a></p></main></noscript>
+  </body>
+</html>

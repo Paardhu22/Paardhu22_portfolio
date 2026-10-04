@@ -1,0 +1,26 @@
+#root { display: flex; flex-direction: column; min-height: 100vh; min-height: 100svh; }
+.route-view { min-width: 0; }
+.header-controls .navigation {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform .38s var(--ease), opacity .28s ease;
+}
+.header-controls.is-scroll-hidden .navigation {
+  opacity: 0;
+  transform: translateY(calc(-100% - 40px));
+  pointer-events: none;
+}
+.header-controls.is-scroll-hidden:has(:focus-visible) .navigation {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+@media (min-width: 561px) {
+  .header-controls .music-player { transition: transform .38s var(--ease), opacity .28s ease; }
+  .header-controls.is-scroll-hidden .music-player { opacity: 0; transform: translateY(calc(-100% - 40px)); pointer-events: none; }
+  .header-controls.is-scroll-hidden:has(:focus-visible) .music-player { opacity: 1; transform: translateY(0); pointer-events: auto; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .route-view:not([hidden]) { animation: route-arrive .28s var(--ease) both; }
+  @keyframes route-arrive { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
+}

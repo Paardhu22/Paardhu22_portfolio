@@ -1,0 +1,9 @@
+.text-accent { font-weight: inherit; }
+.text-accent-violet { color: #8051cd; }
+.text-accent-blue { color: #346bcc; }
+.text-accent-green { color: #328032; }
+.text-accent-amber { color: #9c6809; }
+.text-accent-rose { color: #c94158; }
+.text-accent-end { white-space: nowrap; }
+.text-accent .text-accent-icon { display: inline-block; width: .85em; height: .85em; margin-left: .3em; vertical-align: -.06em; fill: currentColor; stroke: none; }
+.text-accent .text-accent-outline { fill: none; stroke: currentColor; stroke-width: 1.8; }

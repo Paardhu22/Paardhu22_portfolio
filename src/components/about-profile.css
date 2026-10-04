@@ -1,0 +1,64 @@
+.about-introduction { display: grid; grid-template-columns: minmax(0, 1fr) 172px; align-items: start; gap: 32px; }
+.about-bio p { color: #565b64; font-size: 1rem; letter-spacing: -.012em; line-height: 1.9; }
+.about-bio p + p { margin-top: 17px; }
+.about-portrait, .about-photo-grid figure { min-width: 0; margin: 0; }
+.about-photo { display: block; width: 100%; padding: 0; overflow: hidden; border: 0; border-radius: 9px; background: var(--panel); }
+.about-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.about-portrait .about-photo { aspect-ratio: 3 / 4; }
+.about-achievement { margin-top: 54px; padding: 23px 0 27px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.about-achievement-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 12px; margin-bottom: 20px; }
+.about-win-label { display: inline-flex; align-items: center; gap: 7px; color: #806026; font-size: .75rem; font-weight: 700; }
+.about-win-label svg { width: 17px; height: 17px; stroke-width: 1.7; }
+.about-achievement-body { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 27px; align-items: center; }
+.about-team-photo { aspect-ratio: 4 / 5; }
+.about-team-photo img { object-position: 50% 62%; }
+.about-achievement-copy h2 { font-size: 1.375rem; font-weight: 700; letter-spacing: -.04em; line-height: 1.4; margin-bottom: 12px; }
+.about-achievement-copy p { font-size: .8125rem; color: #565b64; line-height: 1.85; }
+.about-achievement-copy p + p { margin-top: 10px; }
+.about-achievement-copy .about-teammates { margin-top: 17px; font-size: .75rem; }
+.about-teammates strong { color: var(--text); font-weight: 600; }
+.about-story-link { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; margin-top: 7px; color: var(--accent); font-size: .75rem; font-weight: 600; text-decoration: underline; text-decoration-color: #b2bedf; text-underline-offset: 4px; }
+.about-story-link:hover { color: var(--accent-hover); text-decoration-color: currentColor; }
+.about-moments { margin-top: 44px; }
+.about-photo-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 21px 13px; }
+.about-photo-grid figure { grid-column: span 2; }
+.about-photo-grid figure.about-moment-wide { grid-column: span 3; }
+.about-photo-grid .about-photo { aspect-ratio: 3 / 4; }
+.about-moment-wide .about-photo { aspect-ratio: 4 / 3; }
+.about-photo-dialog { width: min(820px, calc(100% - 40px)); max-width: none; max-height: calc(100dvh - 40px); margin: auto; padding: 0; overflow: auto; border: 0; border-radius: 12px; background: var(--canvas); color: var(--text); scrollbar-width: none; }
+.about-photo-dialog::-webkit-scrollbar { display: none; }
+.about-photo-dialog::backdrop { background: rgb(20 23 30 / .78); }
+.about-photo-dialog-panel { padding: 54px 18px 14px; }
+.about-photo-close { position: absolute; top: 5px; right: 7px; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 50%; background: transparent; color: var(--text); }
+.about-full-photo { display: block; width: 100%; height: auto; max-height: calc(100dvh - 180px); object-fit: contain; }
+.about-photo-dialog-footer { display: flex; gap: 16px; align-items: center; justify-content: space-between; margin-top: 14px; }
+.about-photo-dialog-footer p { color: var(--secondary); font-size: .75rem; line-height: 1.6; }
+.about-photo-controls { display: flex; gap: 4px; flex-shrink: 0; }
+.about-photo-controls button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--text); }
+.about-photo-controls button:hover, .about-photo-close:hover { background: var(--panel); }
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  .about-photo img { transition: transform .4s var(--ease); }
+  .about-photo:hover img { transform: scale(1.025); }
+}
+@media (max-width: 560px) {
+  .about-introduction { grid-template-columns: minmax(0, 1fr) 130px; gap: 20px; }
+  .about-bio { display: contents; }
+  .about-bio p:first-child { grid-column: 1; }
+  .about-portrait { grid-column: 2; grid-row: 1; }
+  .about-bio p + p { grid-column: 1 / -1; margin-top: 0; }
+  .about-achievement-body { grid-template-columns: minmax(0, 1fr); gap: 21px; }
+  .about-team-photo { aspect-ratio: 1.15; }
+  .about-team-photo img { object-position: 50% 35%; }
+  .about-achievement-copy p { font-size: .875rem; }
+  .about-achievement-copy h2 { font-size: 1.5rem; }
+  .about-achievement { margin-top: 40px; }
+  .about-moments { margin-top: 35px; }
+  .about-photo-grid { gap: 18px 10px; }
+}
+@media (max-width: 420px) {
+  .about-introduction { grid-template-columns: minmax(0, 1fr); gap: 21px; }
+  .about-portrait { grid-column: 1; grid-row: 1; width: 150px; }
+  .about-bio p:first-child { grid-row: 2; }
+  .about-photo-dialog { width: calc(100% - 24px); max-height: calc(100dvh - 24px); }
+  .about-photo-dialog-panel { padding-inline: 12px; }
+}
