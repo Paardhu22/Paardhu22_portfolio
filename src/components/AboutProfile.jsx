@@ -44,17 +44,16 @@ export default function AboutProfile() {
 
   return <>
     <section id="about" className="section about-section standalone-section" aria-labelledby="about-title">
-      <div className="section-heading"><h2 id="about-title">A little about me</h2></div>
+      <div className="section-heading"><h2 id="about-title">About me</h2></div>
       <div className="about-introduction">
         <div className="about-bio">
-          <p>I’m Paardhiv, a creative developer who enjoys the space where <TextAccent tone="violet" icon="pixels">design</TextAccent> meets <TextAccent tone="blue" icon="code">code</TextAccent>. I like starting with a simple idea, figuring things out, and making something I’d want to use myself.</p>
-          <p>For me, the best part is in the <TextAccent tone="amber" icon="search">details</TextAccent>. The way a button responds. The rhythm of a page. Knowing when to leave a little more space.</p>
+          <p>I’m Paardhiv, a developer working on <TextAccent tone="violet" icon="pixels">design</TextAccent> and <TextAccent tone="blue" icon="code">code</TextAccent> for web and mobile applications.</p>
+          <p>I also build tools for education, application security, and lunar image registration. The Work page covers the implementation <TextAccent tone="amber" icon="search">details</TextAccent>.</p>
         </div>
         <figure className="about-portrait">
           <Photo index={0} onOpen={setSelected} eager />
         </figure>
       </div>
-      <div className="personal-note"><span className="note-line" aria-hidden="true" /><span>Always learning. Always making.</span></div>
     </section>
 
     <section className="about-achievement" aria-labelledby="motion-house-title">
@@ -74,7 +73,7 @@ export default function AboutProfile() {
     </section>
 
     <section className="about-moments" aria-labelledby="about-moments-title">
-      <div className="section-heading"><h2 id="about-moments-title">Away from the screen</h2><span className="section-aside">A few moments in between</span></div>
+      <div className="section-heading"><h2 id="about-moments-title">Away from the screen</h2></div>
       <div className="about-photo-grid">
         {photos.slice(2).map((photo, offset) => <figure key={photo.file} className="about-moment-wide">
           <Photo index={offset + 2} onOpen={setSelected} />

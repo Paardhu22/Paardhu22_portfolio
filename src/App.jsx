@@ -13,9 +13,9 @@ const routes = {
   '/contact': 'contact', '/contact.html': 'contact',
 };
 const pages = {
-  work: { title: 'Work · Paardhiv Reddy', description: 'Selected work by Paardhiv Reddy Tumma, creative developer. Thoughtful interfaces, useful ideas, and the little details.' },
-  about: { title: 'About · Paardhiv Reddy', description: 'About Paardhiv Reddy Tumma, a creative developer who enjoys the space where design meets code.' },
-  contact: { title: 'Contact · Paardhiv Reddy', description: 'Get in touch with Paardhiv Reddy Tumma. An idea, a question, or just a hello.' },
+  work: { title: 'Work · Paardhiv Reddy', description: 'Websites, web apps, mobile apps, and technical projects by Paardhiv Reddy Tumma.' },
+  about: { title: 'About · Paardhiv Reddy', description: 'About Paardhiv Reddy Tumma and his work on web, mobile, and technical projects.' },
+  contact: { title: 'Contact · Paardhiv Reddy', description: 'Contact Paardhiv Reddy Tumma by email, GitHub, or LinkedIn.' },
   missing: { title: 'Page not found · Paardhiv Reddy', description: 'Return to Paardhiv’s portfolio.' },
 };
 
@@ -55,7 +55,7 @@ function Footer() {
         <a href="https://www.linkedin.com/in/paardhiv-reddy-tumma/" target="_blank" rel="noopener noreferrer">LinkedIn<span className="sr-only"> (opens in a new tab)</span></a>
       </div>
     </div>
-    <div className="footer-meta"><span>Made with care.</span><span className="local-time"><span>IST</span><time id="local-time" aria-label="Current time in India" dateTime={time.iso}>{time.label}</time></span></div>
+    <div className="footer-meta"><span className="local-time"><span>IST</span><time id="local-time" aria-label="Current time in India" dateTime={time.iso}>{time.label}</time></span></div>
   </footer>;
 }
 

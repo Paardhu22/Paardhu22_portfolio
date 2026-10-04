@@ -27,7 +27,7 @@ export function createQpgenCover() {
   cover.setAttribute('aria-hidden', 'true');
   cover.innerHTML = `
     <span class="qp-cover-label">qp-gen</span>
-    <span class="qp-cover-copy">A paper,<br/>taking shape<span>.</span></span>
+    <span class="qp-cover-copy">Question paper<br/>generator<span>.</span></span>
     <span class="qp-cover-process">Plan <span>→</span> Build <span>→</span> Refine</span>
     <span class="qp-cover-pages">
       <span class="qp-cover-sheet"></span>
@@ -51,7 +51,7 @@ export function mountQpgenStudio(container, reducedMotion) {
   studio.className = 'qp-studio';
   studio.setAttribute('aria-label','Interactive qp-gen paper studio');
   studio.innerHTML = `
-    <div class="qp-studio-heading"><div><span class="qp-eyebrow">qp-gen / paper studio</span><h3>A paper, taking shape.</h3><p>Plan it. Build it. Make it yours.</p></div><span class="qp-demo-tag">Interactive preview</span></div>
+    <div class="qp-studio-heading"><div><span class="qp-eyebrow">qp-gen / paper studio</span><h3>Question paper generator.</h3><p>Set the blueprint, generate questions, and edit the paper.</p></div><span class="qp-demo-tag">Interactive preview</span></div>
     <div class="qp-workspace">
       <div class="qp-controls">
         <div class="qp-control-heading"><span>01</span><h4>Start with a plan</h4></div>

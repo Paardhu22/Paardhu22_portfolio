@@ -1,10 +1,10 @@
 // An illustrated explanation, not a registration job. Measurements are saved project results.
 const TERRAIN = 'assets/projects/seleno/previews/lunar-terrain.webp';
 const steps = [
-  { name: 'Place', title: 'One Moon. Two coordinate systems.', body: 'A Chandrayaan-2 image and a reference map can show the same terrain at different scales, angles, and lighting. Spacecraft geometry gives the first rough placement.', note: 'Start with the footprint, not a blind search.' },
-  { name: 'Match', title: 'Find the same ground.', body: 'Coarse matchers find a useful overlap. An evenly spaced grid then searches for matching patches at the source image’s native resolution.', note: 'Gold: source points. Mint: reference points.' },
-  { name: 'Align', title: 'Fit. Refine. Check again.', body: 'A verified transform brings the images into a shared frame. Terrain and smooth local corrections are added only when they improve validation.', note: 'The moving footprint illustrates the correction.' },
-  { name: 'Inspect', title: 'A good-looking overlay isn’t enough.', body: 'Seleno measures error on sealed check points that fitting never used. It exports the registered image, match points, and an honest accuracy report.', note: 'Blue squares represent held-out check points.' },
+  { name: 'Place', title: 'Place the source image.', body: 'A Chandrayaan-2 image and a reference map can show the same terrain at different scales, angles, and lighting. Spacecraft geometry gives the first rough placement.', note: 'Start with the footprint, not a blind search.' },
+  { name: 'Match', title: 'Match image features.', body: 'Coarse matchers find a useful overlap. An evenly spaced grid then searches for matching patches at the source image’s native resolution.', note: 'Gold: source points. Mint: reference points.' },
+  { name: 'Align', title: 'Fit and validate the transform.', body: 'A verified transform brings the images into a shared frame. Terrain and smooth local corrections are added only when they improve validation.', note: 'The moving footprint illustrates the correction.' },
+  { name: 'Inspect', title: 'Measure held-out error.', body: 'Seleno measures error on sealed check points that fitting never used. It exports the registered image, match points, and an accuracy report.', note: 'Blue squares represent held-out check points.' },
 ];
 
 // README and reports/validation_20260925/deck_summary.md in seleno-prototype.
@@ -53,7 +53,7 @@ export function createSelenoCover() {
   cover.innerHTML = `<img src="${TERRAIN}" alt="Lunar terrain with a source-image footprint" loading="lazy" decoding="async"/>
     <span class="seleno-cover-shade"></span><span class="seleno-cover-orbit" aria-hidden="true"></span>
     <span class="seleno-cover-label">SELENO <span>Lunar image registration</span></span>
-    <span class="seleno-cover-copy">Finding common ground<span>Different images. One shared frame.</span></span>
+    <span class="seleno-cover-copy">Lunar image alignment<span>Chandrayaan-2 → reference maps.</span></span>
     <span class="seleno-cover-foot">Explore the alignment <span aria-hidden="true">↗</span></span>`;
   return cover;
 }

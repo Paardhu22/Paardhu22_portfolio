@@ -77,7 +77,6 @@ h1 { font-size: 1.625rem; font-weight: 700; letter-spacing: -.055em; line-height
 .name-dot { color: var(--accent); }
 .role { font-size: .875rem; color: var(--secondary); margin-top: 3px; }
 .intro-copy { max-width: 54ch; margin-top: 28px; font-size: 1.0625rem; line-height: 1.9; color: #565b64; letter-spacing: -.018em; }
-.intro-note { margin-top: 19px; color: var(--secondary); font-size: .9375rem; }
 .intro-links { display: flex; align-items: center; flex-wrap: wrap; gap: 22px; margin-top: 25px; font-size: .875rem; }
 .hello-link { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 6px 12px; border: 1px solid #d4d6dd; border-radius: 7px; background: #f5f6f8; font-weight: 600; box-shadow: 0 1px 2px rgb(40 43 48 / .025); transition: background .2s ease, border-color .2s ease, transform .2s var(--ease); }
 .hello-link svg { width: 16px; height: 16px; }
@@ -111,14 +110,10 @@ h1 { font-size: 1.625rem; font-weight: 700; letter-spacing: -.055em; line-height
 
 .about-section > p { color: #565b64; font-size: 1rem; letter-spacing: -.012em; line-height: 1.9; max-width: 57ch; }
 .about-section > p + p { margin-top: 17px; }
-.personal-note { display: flex; align-items: center; gap: 11px; margin-top: 23px; color: var(--secondary); font-size: .8125rem; }
-.note-line { display: block; width: 18px; height: 1px; background: #8392bb; }
 
 .contact-section { margin-top: 94px; }
 .standalone-section { margin-top: 48px; }
-.contact-kicker { font-size: .8125rem; color: var(--secondary); margin-bottom: 9px; }
 .contact-section h2 { font-size: 1.625rem; font-weight: 600; letter-spacing: -.045em; line-height: 1.45; }
-.contact-copy { color: var(--secondary); font-size: .9375rem; margin-top: 9px; }
 /* Animated links adapted from the supplied Skiper UI Link001 reference. */
 .contact-links { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 17px; }
 .contact-link { position: relative; display: inline-flex; align-items: center; max-width: 100%; min-width: 0; font-size: 1.0625rem; font-weight: 500; transition: color .3s ease; }
@@ -135,7 +130,7 @@ h1 { font-size: 1.625rem; font-weight: 700; letter-spacing: -.055em; line-height
 .footer-socials { display: flex; gap: 21px; }
 .footer-main a { transition: color .2s ease; }
 .footer-main a:hover { color: var(--accent); }
-.footer-meta { margin-top: 22px; font-family: Manrope, sans-serif; font-size: .75rem; color: var(--secondary); }
+.footer-meta { justify-content: flex-end; margin-top: 22px; font-family: Manrope, sans-serif; font-size: .75rem; color: var(--secondary); }
 .local-time { display: flex; align-items: baseline; gap: 11px; }
 .local-time time { font-variant-numeric: tabular-nums; }
 .local-time time:empty { display: none; }

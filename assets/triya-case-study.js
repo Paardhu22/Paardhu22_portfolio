@@ -34,7 +34,7 @@ const android = [
 ];
 
 export const triyaProducts = {
-  website: { label: 'Website', repo: 'triya-website', title: 'The public-facing website', summary: 'A clear first impression, followed by a guided journey through the accommodation offering.', status: 'Public experience', sections: website },
+  website: { label: 'Website', repo: 'triya-website', title: 'The public-facing website', summary: 'Accommodation categories, property collections, and detail views.', status: 'Public experience', sections: website },
   manager: { label: 'Web app', repo: 'triya-manager', title: 'The property operations workspace', summary: 'Occupancy, tenant records, collections, invoices, and bulk reminders in one property-scoped workspace.', status: 'Staff operations', sections: manager },
   android: { label: 'Android', repo: 'triya-android', title: 'The native Android counterpart', summary: 'The Manager’s day-to-day workflows adapted to touch, with a replaceable mock data layer.', status: 'Native build · API integration pending', sections: android },
 };

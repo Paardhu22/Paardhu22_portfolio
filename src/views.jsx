@@ -19,13 +19,12 @@ export function Identity() {
 
 export function WorkIntro() {
   return (<>
-<p className="intro-copy">I turn ideas into things you can <TextAccent tone="blue" icon="cursor">click, use, and enjoy</TextAccent>. I’m drawn to <TextAccent tone="violet" icon="pixels">clear interfaces</TextAccent>, <TextAccent tone="green" icon="spark">thoughtful interactions</TextAccent>, and the <TextAccent tone="amber" icon="search">little details</TextAccent> that make something <TextAccent tone="rose" icon="heart">feel right</TextAccent>.</p>
-        <p className="intro-note">A little curiosity. A lot of care.</p>
+<p className="intro-copy">I build <TextAccent tone="blue" icon="cursor">websites</TextAccent>, <TextAccent tone="violet" icon="pixels">web apps</TextAccent>, and <TextAccent tone="green" icon="code">mobile apps</TextAccent>. My work includes client projects, <TextAccent tone="amber" icon="search">AI tools</TextAccent>, <TextAccent tone="rose" icon="code">security testing</TextAccent>, and image registration.</p>
 
         <div className="intro-links">
           <Link className="hello-link" to="/contact">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4.5 7 7.5 6L19.5 7"/></svg>
-            Say hello
+            Contact
           </Link>
           <a className="quiet-link" href="https://github.com/Paardhu22" target="_blank" rel="noopener noreferrer">GitHub<span className="sr-only"> (opens in a new tab)</span></a>
           <a className="quiet-link" href="https://www.linkedin.com/in/paardhiv-reddy-tumma/" target="_blank" rel="noopener noreferrer">LinkedIn<span className="sr-only"> (opens in a new tab)</span></a>
@@ -65,9 +64,7 @@ export function AboutContent({ active }) {
 export function ContactContent() {
   return (<>
 <section id="contact" className="section contact-section standalone-section" aria-labelledby="contact-title">
-        <p className="contact-kicker">Have something in mind?</p>
-        <h2 id="contact-title">Let’s make something good<span className="name-dot" aria-hidden="true">.</span></h2>
-        <p className="contact-copy">An idea, a question, or just a hello. My inbox is open.</p>
+        <h2 id="contact-title">Contact<span className="name-dot" aria-hidden="true">.</span></h2>
         <div className="contact-links">
           <a className="contact-link" href="mailto:paardhivreddy22@gmail.com">
             <span className="contact-link-label">paardhivreddy22@gmail.com</span>

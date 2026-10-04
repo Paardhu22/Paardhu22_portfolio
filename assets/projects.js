@@ -51,9 +51,9 @@ export const projects = [
     description: 'Aligning Chandrayaan-2 imagery with lunar reference maps.',
     details: 'A lunar image registration tool built for Smart India Hackathon problem SIH26166. SELENO aligns OHRC, TMC-2, and IIRS imagery with reference maps, delivering registered images, match points, and held-out error measurements. Sub-source-pixel accuracy is the goal; results keep missed acceptance gates visible.',
     explanation: [
-      { title: 'Different views, shared ground', body: 'Spacecraft geometry places the image. Multiple matchers handle changes in lighting, scale, and viewpoint.' },
-      { title: 'Every correction earns its place', body: 'Native-resolution matching refines the fit. Terrain and local correction fields stay only when validation improves.' },
-      { title: 'Keep the uncertainty visible', body: 'Sealed check points measure the error. Real Chandrayaan-2 validation pairs still return warnings, with reasons in the report.' },
+      { title: 'Initial image placement', body: 'Spacecraft geometry places the image. Multiple matchers handle changes in lighting, scale, and viewpoint.' },
+      { title: 'Validated model corrections', body: 'Native-resolution matching refines the fit. Terrain and local correction fields stay only when validation improves.' },
+      { title: 'Held-out evaluation', body: 'Sealed check points measure the error. Real Chandrayaan-2 validation pairs still return warnings, with reasons in the report.' },
     ],
     images: [
       { src: 'assets/projects/seleno/previews/lunar-overview.webp', thumbnail: 'assets/projects/seleno/previews/lunar-overview-thumb.webp', label: 'Lunar reference overview', alt: 'Seleno registration interface showing a wide lunar reference map' },
