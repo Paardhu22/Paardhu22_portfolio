@@ -6,6 +6,7 @@ import { music } from '../assets/music.js';
 import { initializeMusicPlayer } from '../assets/music-player.js';
 import { initializeProjectViewer } from '../assets/project-viewer.js';
 import { useScrollDock } from './useScrollDock.js';
+import { completePortfolioPreloader } from './preloader.js';
 
 const routes = {
   '/': 'work', '/work': 'work', '/index.html': 'work',
@@ -77,6 +78,7 @@ export function App() {
   useEffect(() => {
     const player = initializeMusicPlayer(music);
     viewer.current = initializeProjectViewer(projects);
+    completePortfolioPreloader();
     return () => { player?.dispose(); viewer.current?.dispose(); viewer.current = null; };
   }, []);
 

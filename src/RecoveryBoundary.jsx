@@ -8,6 +8,7 @@ export class RecoveryBoundary extends Component {
   }
 
   componentDidCatch(error, info) {
+    window.dismissPortfolioPreloader?.();
     console.error('Portfolio could not render:', error, info.componentStack);
   }
 

@@ -21,10 +21,43 @@
       .startup-fallback button { padding: 9px 16px; border: 1px solid #e7e8ec; border-radius: 8px; background: #fcfcfd; color: #282b30; font: inherit; cursor: pointer; }
       .startup-fallback a { color: #3f5dc6; }
       body { margin: 0; background: #fcfcfd; }
+      .portfolio-preloader { display: none; }
+      html.is-loading { overflow: hidden; }
+      .is-loading #root { visibility: hidden; }
+      .is-loading.is-loader-leaving #root { visibility: visible; }
+      .is-loading .portfolio-preloader { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 24px; background: #fcfcfd; color: #282b30; transition: opacity 320ms ease; }
+      .is-loader-leaving .portfolio-preloader { opacity: 0; }
+      .preloader-mark { display: flex; align-items: baseline; justify-content: center; gap: .23em; font: 700 clamp(24px, 5vw, 32px)/1.4 Manrope, system-ui, sans-serif; letter-spacing: -.055em; }
+      .preloader-word { overflow: hidden; display: inline-flex; }
+      .preloader-word > span { display: block; animation: preloader-arrive 650ms cubic-bezier(.22, 1, .36, 1) both; }
+      .preloader-word:nth-child(2) > span { animation-delay: 90ms; }
+      .preloader-dot { width: .14em; height: .14em; margin-left: -.16em; border-radius: 50%; background: #3f5dc6; animation: preloader-dot 1.4s ease-in-out infinite; }
+      .preloader-line { width: 132px; height: 2px; margin: 24px auto 0; overflow: hidden; border-radius: 2px; background: #e7e8ec; }
+      .preloader-line::after { content: ''; display: block; width: 42%; height: 100%; border-radius: inherit; background: #3f5dc6; animation: preloader-line 1.4s cubic-bezier(.65, 0, .35, 1) infinite; }
+      .preloader-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+      @keyframes preloader-arrive { from { transform: translateY(110%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+      @keyframes preloader-dot { 0%, 100% { opacity: .5; } 50% { opacity: 1; } }
+      @keyframes preloader-line { from { transform: translateX(-105%); } to { transform: translateX(345%); } }
+      @media (prefers-reduced-motion: reduce) {
+        .is-loading .portfolio-preloader { transition: none; }
+        .preloader-word > span, .preloader-dot, .preloader-line::after { animation: none; }
+        .preloader-line::after { width: 100%; }
+      }
     </style>
     <script>
+      document.documentElement.classList.add('is-loading');
+      var startupTimeout;
+      window.dismissPortfolioPreloader = function () {
+        clearTimeout(startupTimeout);
+        document.documentElement.classList.remove('is-loading', 'is-loader-leaving');
+        var root = document.getElementById('root');
+        if (root) root.inert = false;
+        var loader = document.getElementById('portfolio-preloader');
+        if (loader) loader.remove();
+      };
       // This stays independent of React, so even a failed module has a visible recovery.
       window.reportPortfolioStartupError = function (error) {
+        window.dismissPortfolioPreloader();
         var fallback = document.getElementById('portfolio-startup');
         if (!fallback) return;
         document.getElementById('startup-message').textContent = 'The portfolio couldn’t load. Please try again.';
@@ -37,12 +70,21 @@
       window.addEventListener('DOMContentLoaded', function () {
         var button = document.getElementById('startup-retry');
         if (button) button.addEventListener('click', function () { window.location.reload(); });
-        window.setTimeout(function () { window.reportPortfolioStartupError(); }, 20000);
+        if (document.getElementById('portfolio-preloader')) {
+          startupTimeout = window.setTimeout(function () { window.reportPortfolioStartupError(); }, 20000);
+        }
       });
     </script>
     <script src="/src/start.js" type="module"></script>
   </head>
   <body>
+    <div id="portfolio-preloader" class="portfolio-preloader" role="status" aria-live="polite">
+      <div>
+        <div class="preloader-mark" aria-hidden="true"><span class="preloader-word"><span>Paardhiv</span></span><span class="preloader-word"><span>Reddy</span></span><span class="preloader-dot"></span></div>
+        <div class="preloader-line" aria-hidden="true"></div>
+      </div>
+      <span class="preloader-status">Loading portfolio</span>
+    </div>
     <div id="root"><main id="portfolio-startup" class="startup-fallback">
       <h1>Paardhiv Reddy<span style="color: #3f5dc6">.</span></h1>
       <p>Creative developer</p>

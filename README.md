@@ -64,6 +64,15 @@ account/project connection is still required to publish it.
 
 ## Navigation and music
 
+The initial document shows a short preloader with the name, blue dot, and a
+moving line. It is available before the application bundle loads and fades away
+once React mounts and the font is ready (font waiting is capped at 650 ms).
+The entrance lasts at least 720 ms on fast loads, followed by a 320 ms fade.
+Reduced motion skips the movement and minimum delay. It never replays on internal
+navigation, starts music, or waits for gallery images. Startup and render errors
+remove it so the recovery controls remain accessible; JavaScript-disabled visits
+show the existing fallback instead.
+
 The header, music player, footer, and project controller remain mounted.
 Client-side navigation changes the URL and active content without
 replacing the audio element, reloading the document, or resetting playback time.
