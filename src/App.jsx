@@ -45,7 +45,7 @@ function useIndiaTime() {
   return { label: formatter.current.format(time), iso: time.toISOString() };
 }
 
-function Footer({ page }) {
+function Footer() {
   const time = useIndiaTime();
   return <footer className="site-footer page">
     <div className="footer-main">
@@ -56,7 +56,6 @@ function Footer({ page }) {
       </div>
     </div>
     <div className="footer-meta"><span>Made with care.</span><span className="local-time"><span>IST</span><time id="local-time" aria-label="Current time in India" dateTime={time.iso}>{time.label}</time></span></div>
-    <a className="player-credit" href="https://skiper-ui.com/" target="_blank" rel="noopener noreferrer">Music and {page === 'contact' ? 'link' : 'project'} interactions by Skiper UI<span className="sr-only"> (opens in a new tab)</span></a>
   </footer>;
 }
 
@@ -129,7 +128,7 @@ export function App() {
       {page === 'missing' && <section className="section standalone-section route-view"><h2>That page isn’t here.</h2><Link className="text-link" to="/">Back to work</Link></section>}
     </main>
     <ProjectDialog />
-    <Footer page={page} />
+    <Footer />
     <span className="sr-only" role="status" aria-live="polite" aria-atomic="true">{announcement}</span>
   </>;
 }

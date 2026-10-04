@@ -294,8 +294,9 @@ does not execute the registration pipeline or its suites.
 ## Credits
 
 The music, animated Contact links, rolling case-study contents, and expanding project interaction adapt the
-user-supplied Skiper UI examples by @gurvinder-singh02. Attribution is linked in
-the footer. Manrope and IBM Plex Mono use the SIL Open Font License; licences
+user-supplied Skiper UI examples by @gurvinder-singh02. Credits are documented
+here rather than displayed in page footers. Manrope and IBM Plex Mono use the
+SIL Open Font License; licences
 are in `assets/fonts/`. The public GitHub avatar is stored locally.
 
 The design follows the spacing and personal scale of
