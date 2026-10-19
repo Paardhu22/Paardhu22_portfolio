@@ -3,6 +3,10 @@
 Paardhiv Reddy Tumma’s minimal portfolio, built with React, React Router, and Vite.
 Work, About, and Contact are distinct routes in one persistent application.
 
+The Contact page includes a three-study AI-assisted art sketchbook, with
+responsive images and keyboard-accessible enlarged views. Original sketches
+and image regeneration instructions are in [artwork/README.md](artwork/README.md).
+
 ## Run and build
 
 Use Node.js 24 (`nvm use` reads `.nvmrc`).

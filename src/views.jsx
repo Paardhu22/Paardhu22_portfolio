@@ -1,6 +1,8 @@
 import { Link } from 'react-router';
 import AboutProfile from './components/AboutProfile.jsx';
 import TextAccent from './components/TextAccent.jsx';
+import ContactArtwork from './components/ContactArtwork.jsx';
+import { projects } from '../assets/projects.js';
 
 export function Identity() {
   return (<>
@@ -10,7 +12,7 @@ export function Identity() {
             <span className="avatar-note" aria-hidden="true">hi, I’m Paardhiv.</span>
           </div>
           <div>
-            <h1 id="intro-title">Paardhiv Reddy<span className="name-dot" aria-hidden="true">.</span></h1>
+            <h1 id="intro-title">Paardhiv Reddy Tumma<span className="name-dot" aria-hidden="true">.</span></h1>
             <p className="role">Creative developer</p>
           </div>
         </div>
@@ -38,19 +40,14 @@ export function WorkContent() {
 <section id="work" className="section work-section" aria-labelledby="work-title">
         <div className="section-heading">
           <h2 id="work-title">Selected work</h2>
-          <span className="section-aside" id="work-status">A collection in progress</span>
+          <span className="section-aside" id="work-status">Selected projects</span>
         </div>
         <div className="work-empty-preview" id="work-empty">
-          <article className="project project-example">
-            <button id="preview-example-button" className="project-preview-trigger" type="button" aria-label="View preview example" aria-haspopup="dialog" aria-controls="project-viewer" disabled>
-              <span className="project-preview">
-                <img src="assets/preview-example.png" alt="Paardhiv’s portfolio introduction" loading="lazy" />
-                <span className="project-example-tag">Preview example</span>
-              </span>
-            </button>
-            <div className="project-title-row"><h3>Try the preview</h3><span className="section-aside">A small example</span></div>
-            <p className="project-description">Selected projects will be here soon.</p>
-          </article>
+          {projects.map(project => <article className="project" key={project.title}>
+            <div className="project-title-row"><h3>{project.title}</h3></div>
+            <p className="project-description">{project.description}</p>
+            {project.url && <a className="text-link" href={project.url}>{project.linkLabel || 'Visit project'}</a>}
+          </article>)}
         </div>
         <div className="project-grid" id="project-grid" hidden></div>
       </section>
@@ -61,7 +58,7 @@ export function AboutContent({ active }) {
   return active ? <AboutProfile /> : null;
 }
 
-export function ContactContent() {
+export function ContactContent({ active }) {
   return (<>
 <section id="contact" className="section contact-section standalone-section" aria-labelledby="contact-title">
         <h2 id="contact-title">Contact<span className="name-dot" aria-hidden="true">.</span></h2>
@@ -87,6 +84,7 @@ export function ContactContent() {
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
         </div>
+        {active && <ContactArtwork active />}
       </section>
   </>);
 }

@@ -5,6 +5,7 @@ dist/
 .env.*
 !.env.example
 .code-review-graph/
+.trinker/
 .vercel/
 # Keep original uploads locally; the site uses the optimized preview assets.
 assets/projects/WhatsApp Unknown*/

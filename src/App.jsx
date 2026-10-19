@@ -7,17 +7,12 @@ import { initializeMusicPlayer } from '../assets/music-player.js';
 import { initializeProjectViewer } from '../assets/project-viewer.js';
 import { useScrollDock } from './useScrollDock.js';
 import { completePortfolioPreloader } from './preloader.js';
+import { applyPageMetadata } from './seo.js';
 
 const routes = {
   '/': 'work', '/work': 'work', '/index.html': 'work',
   '/about': 'about', '/about.html': 'about',
   '/contact': 'contact', '/contact.html': 'contact',
-};
-const pages = {
-  work: { title: 'Work · Paardhiv Reddy', description: 'Websites, web apps, mobile apps, and technical projects by Paardhiv Reddy Tumma.' },
-  about: { title: 'About · Paardhiv Reddy', description: 'About Paardhiv Reddy Tumma and his work on web, mobile, and technical projects.' },
-  contact: { title: 'Contact · Paardhiv Reddy', description: 'Contact Paardhiv Reddy Tumma by email, GitHub, or LinkedIn.' },
-  missing: { title: 'Page not found · Paardhiv Reddy', description: 'Return to Paardhiv’s portfolio.' },
 };
 
 function NavigationIcon({ type }) {
@@ -101,10 +96,7 @@ export function App() {
     const changed = previousKey.current !== null && previousKey.current !== location.key;
     activeKey.current = location.key;
     previousKey.current = location.key;
-    document.title = pages[page].title;
-    document.querySelector('meta[name="description"]')?.setAttribute('content', pages[page].description);
-    document.querySelector('meta[property="og:title"]')?.setAttribute('content', pages[page].title);
-    document.querySelector('meta[property="og:description"]')?.setAttribute('content', pages[page].description);
+    applyPageMetadata(page);
     if (!changed) return;
     viewer.current?.closeImmediately();
     window.scrollTo({ top: navigationType === 'POP' ? positions.current.get(location.key) || 0 : 0, behavior: 'instant' });
@@ -126,7 +118,7 @@ export function App() {
       <section className="intro" aria-labelledby="intro-title"><Identity /></section>
       <div className="route-view" hidden={page !== 'work'} data-page="work"><WorkIntro /><WorkContent /></div>
       <div className="route-view" hidden={page !== 'about'} data-page="about"><AboutContent active={page === 'about'} /></div>
-      <div className="route-view" hidden={page !== 'contact'} data-page="contact"><ContactContent /></div>
+      <div className="route-view" hidden={page !== 'contact'} data-page="contact"><ContactContent active={page === 'contact'} /></div>
       {page === 'missing' && <section className="section standalone-section route-view"><h2>That page isn’t here.</h2><Link className="text-link" to="/">Back to work</Link></section>}
     </main>
     <ProjectDialog />

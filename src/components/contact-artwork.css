@@ -1,0 +1,45 @@
+.contact-artwork { margin-top: 64px; padding-top: 30px; border-top: 1px solid var(--line); }
+.artwork-heading { display: flex; justify-content: space-between; gap: 20px; align-items: flex-end; }
+.artwork-eyebrow { margin-bottom: 8px; font-size: .6875rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--secondary); }
+.artwork-heading h3 { font-size: 1.5rem; font-weight: 600; line-height: 1.4; letter-spacing: -.045em; }
+.artwork-count, .artwork-number { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .6875rem; color: #83858a; }
+.artwork-count { padding-bottom: 4px; white-space: nowrap; }
+.artwork-intro { color: var(--secondary); font-size: .8125rem; margin-top: 10px; line-height: 1.8; }
+.artwork-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 20px; margin-top: 26px; }
+.artwork-study { min-width: 0; margin: 0; }
+.artwork-study-harbour { grid-column: 1 / -1; }
+.artwork-open { position: relative; display: block; width: 100%; padding: 0; overflow: hidden; background: #eee4d0; border: 1px solid rgb(81 60 34 / .12); border-radius: 8px; aspect-ratio: 1; text-align: left; }
+.artwork-open img { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .65s var(--ease); }
+.artwork-open:hover img { transform: scale(1.025); }
+.artwork-expand { position: absolute; bottom: 14px; right: 14px; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; color: #382c20; background: rgb(252 248 240 / .94); box-shadow: 0 1px 7px rgb(56 32 18 / .12); transition: opacity .2s, transform .2s; }
+.artwork-expand svg { width: 16px; height: 16px; stroke-width: 1.4; }
+.artwork-study figcaption { display: flex; gap: 12px; align-items: baseline; margin-top: 12px; }
+.artwork-study h4 { margin: 0; color: var(--text); font-size: .875rem; font-weight: 600; letter-spacing: -.025em; line-height: 1.6; }
+.artwork-study figcaption p { margin-top: 3px; font-size: .6875rem; color: var(--secondary); line-height: 1.65; }
+.artwork-footnote { margin-top: 28px; font-size: .75rem; color: var(--secondary); line-height: 1.8; }
+.artwork-lightbox { width: min(960px, calc(100vw - 32px)); max-width: none; max-height: calc(100svh - 32px); margin: auto; padding: 0; overflow: auto; border: 1px solid rgb(255 255 255 / .1); border-radius: 12px; background: #fcfaf6; color: var(--text); box-shadow: 0 24px 100px rgb(0 0 0 / .25); }
+.artwork-lightbox::backdrop { background: rgb(17 20 25 / .8); backdrop-filter: blur(8px); }
+.artwork-lightbox-panel { position: relative; }
+.artwork-lightbox-toolbar { position: sticky; z-index: 1; top: 0; display: flex; align-items: center; justify-content: space-between; padding: 8px 12px 8px 20px; background: rgb(252 250 246 / .96); border-bottom: 1px solid rgb(81 60 34 / .1); font-size: .75rem; color: var(--secondary); }
+.artwork-lightbox-toolbar button { display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 50%; background: transparent; color: var(--text); }
+.artwork-lightbox-toolbar button:hover { background: #eeebe4; }
+.artwork-lightbox-panel > img { display: block; width: 100%; height: auto; }
+.artwork-lightbox-caption { padding: 20px 24px 24px; }
+.artwork-lightbox-caption h3 { font-size: 1.125rem; letter-spacing: -.035em; font-weight: 600; }
+.artwork-lightbox-caption p { margin-top: 6px; font-size: .8125rem; color: var(--secondary); max-width: 70ch; line-height: 1.8; }
+@media (hover: hover) and (pointer: fine) {
+  .artwork-expand { opacity: 0; transform: translateY(4px); }
+  .artwork-open:hover .artwork-expand, .artwork-open:focus-visible .artwork-expand { opacity: 1; transform: none; }
+}
+@media (max-width: 420px) {
+  .contact-artwork { margin-top: 48px; padding-top: 24px; }
+  .artwork-grid { grid-template-columns: 1fr; gap: 26px; }
+  .artwork-study-harbour { grid-column: auto; }
+  .artwork-count { font-size: .625rem; }
+  .artwork-lightbox { width: calc(100vw - 16px); max-height: calc(100svh - 16px); border-radius: 8px; }
+  .artwork-lightbox-caption { padding: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .artwork-open img, .artwork-expand { transition: none; }
+  .artwork-open:hover img { transform: none; }
+}

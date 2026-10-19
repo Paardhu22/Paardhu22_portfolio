@@ -47,7 +47,7 @@ export default function AboutProfile() {
       <div className="section-heading"><h2 id="about-title">About me</h2></div>
       <div className="about-introduction">
         <div className="about-bio">
-          <p>I’m Paardhiv, a developer working on <TextAccent tone="violet" icon="pixels">design</TextAccent> and <TextAccent tone="blue" icon="code">code</TextAccent> for web and mobile applications.</p>
+          <p>I’m Paardhiv Reddy Tumma, a developer working on <TextAccent tone="violet" icon="pixels">design</TextAccent> and <TextAccent tone="blue" icon="code">code</TextAccent> for web and mobile applications.</p>
           <p>I also build tools for education, application security, and lunar image registration. The Work page covers the implementation <TextAccent tone="amber" icon="search">details</TextAccent>.</p>
         </div>
         <figure className="about-portrait">
