@@ -37,7 +37,7 @@ try {
       verification && `<meta name="google-site-verification" content="${escape(verification)}" />`,
       `<script id="portfolio-schema" type="application/ld+json">${JSON.stringify(structuredData(page)).replace(/</g, '\\u003c')}</script>`,
     ].filter(Boolean).join('\n    ');
-    const html = shell.replace(/<!--seo-start-->[\s\S]*?<!--seo-end-->/, `<!--seo-start-->\n    ${head}\n    <!--seo-end-->`)
+    const html = shell.replace(/<!--seo-start-->[\s\S]*?<!--seo-end-->/, () => `<!--seo-start-->\n    ${head}\n    <!--seo-end-->`)
       .replace(/<!--app-html-->[\s\S]*?<!--\/app-html-->/, () => `<!--app-html-->${render(meta.path || '/not-found')}<!--/app-html-->`);
     await writeFile(`dist/${page === 'work' ? 'index' : page === 'missing' ? '404' : page}.html`, html);
   }

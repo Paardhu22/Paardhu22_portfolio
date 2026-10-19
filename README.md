@@ -37,11 +37,13 @@ npm run build
 npm run preview
 ```
 
-The production site is in `dist/`. Deploy that folder on a static host with a
-history fallback to `index.html` for `/about` and `/contact`. `_redirects` is
-included for Netlify and Cloudflare Pages. The build also produces `about.html`
-and `contact.html` aliases for older bookmarks. `/index.html`, `/work`, and the
-old `.html` URLs resolve to the canonical routes without a document reload.
+The production site is in `dist/`. Work, About, Contact, and the not-found page
+are rendered to HTML at build time using the same React components as the client.
+No browser, server runtime, or external API is needed to build these pages.
+`about.html` and `contact.html` are served at `/about` and `/contact` on Vercel.
+`_redirects` provides equivalent routes and a real 404 on Netlify/Cloudflare Pages.
+Other static hosts need equivalent clean URLs, alias redirects, and a 404 fallback;
+do not rewrite every request to `index.html` (that also swallows the sitemap).
 
 ## Deploy to Vercel
 
@@ -54,10 +56,10 @@ build command, and `dist` output directory. The npm build also runs `postbuild`
 to copy photos, audio, fonts, and other static assets. `package.json` selects
 Node.js 24. No environment variables are required.
 
-The SPA rewrite serves `index.html` for client routes so direct visits and
-refreshes on `/about` and `/contact` work. This follows
-[Vercel's Vite deployment guidance](https://vercel.com/docs/frameworks/frontend/vite#using-vite-to-make-spas).
-Static assets retain their normal file URLs. `.vercelignore` excludes local
+Vercel's `cleanUrls` serves the separately rendered pages at `/`, `/about`, and
+`/contact`, redirects old `.html` URLs, and serves `404.html` for unknown paths.
+The explicit `/work` redirect points to `/`. Internal navigation still uses React
+Router without reloading the document. Static assets retain their normal file URLs. `.vercelignore` excludes local
 dependencies, build output, environment files, and unused original uploads from
 CLI deployments.
 
@@ -65,6 +67,51 @@ After deployment, check `/`, `/about`, and `/contact` directly, refresh each pag
 and open a project and a photo. Future pushes to the connected `main` branch
 update the production deployment. This setup prepares the repository; a Vercel
 account/project connection is still required to publish it.
+
+## Search visibility and Google Search Console
+
+The canonical production origin is `https://paardhu22-portfolio.vercel.app`,
+defined once in `src/seo.js`. Update it there if you adopt a custom domain.
+The build emits distinct titles/descriptions, canonical URLs, social previews,
+Person/WebSite/page JSON-LD, `robots.txt`, and a three-page `sitemap.xml`.
+Your full name and project summaries are readable without running JavaScript.
+The About page identifies your GitHub and LinkedIn profiles as the same person.
+Unknown pages are excluded from the sitemap and carry `noindex, follow`.
+The social preview asset is `assets/social-preview.png` (1200 × 630).
+
+After these changes are deployed:
+
+1. Open [Google Search Console](https://search.google.com/search-console/) and
+   add a **URL prefix** property for `https://paardhu22-portfolio.vercel.app/`.
+2. Choose **HTML tag** verification. Copy only the `content` value into a Vercel
+   production environment variable named `GOOGLE_SITE_VERIFICATION`, redeploy,
+   then click Verify in Search Console. This optional value is intentionally
+   public in the built HTML; do not put credentials or API tokens there.
+3. In **Sitemaps**, submit `sitemap.xml`.
+4. In **URL inspection**, inspect the homepage, run **Test live URL**, and choose
+   **Request indexing**. Repeat for `/about` and `/contact` if needed.
+5. Add the portfolio URL to your LinkedIn website/Featured section and GitHub
+   profile Website field so your public profiles link back to your portfolio.
+
+Google controls crawling, indexing, and ranking. These changes improve discovery
+and the information Google receives; they cannot guarantee placement or timing.
+See [Google's recrawl guidance](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl).
+
+Validate production output locally (run `npm run preview -- --port 4174` first):
+
+```sh
+npm run build
+npm run check:seo
+npm run check:artwork
+```
+
+The browser checks use Playwright Chromium. Set `CHROMIUM_PATH` when using an
+existing browser installation, or install Chromium with `npx playwright install chromium`.
+`PORTFOLIO_TEST_URL` overrides the test origin. The SEO check verifies raw HTML,
+mobile rendering without JavaScript, JSON-LD, metadata on navigation, sitemap and
+robots content types, project previews, and recovery when bundles fail to load.
+Vercel's actual redirect and 404 HTTP status codes should also be checked after
+publishing; Vite preview is not an emulator for Vercel routing.
 
 ## Navigation and music
 
@@ -75,7 +122,7 @@ The entrance lasts at least 720 ms on fast loads, followed by a 320 ms fade.
 Reduced motion skips the movement and minimum delay. It never replays on internal
 navigation, starts music, or waits for gallery images. Startup and render errors
 remove it so the recovery controls remain accessible; JavaScript-disabled visits
-show the existing fallback instead.
+show the pre-rendered portfolio content instead.
 
 The header, music player, footer, and project controller remain mounted.
 Client-side navigation changes the URL and active content without
