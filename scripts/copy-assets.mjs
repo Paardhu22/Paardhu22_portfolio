@@ -1,4 +1,4 @@
-import { cp, copyFile, writeFile } from 'node:fs/promises';
+import { cp, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 // Keep the user's existing assets/ locations and filenames, including audio.
@@ -6,7 +6,6 @@ await cp('assets', 'dist/assets', {
   recursive: true,
   filter: source => !['.js', '.css'].includes(path.extname(source)),
 });
-// Legacy bookmarks still open the React shell on static hosts.
-await Promise.all(['about.html', 'contact.html'].map(file => copyFile('dist/index.html', `dist/${file}`)));
-// Netlify/Cloudflare Pages history fallback; other hosts need the same rewrite.
-await writeFile('dist/_redirects', '/* /index.html 200\n');
+await import('./build-seo.mjs');
+// Explicit routes preserve real 404 responses and do not swallow robots/sitemap.
+await writeFile('dist/_redirects', '/work / 301\n/index.html / 301\n/about.html /about 301\n/contact.html /contact 301\n/about /about.html 200\n/contact /contact.html 200\n/* /404.html 404\n');
